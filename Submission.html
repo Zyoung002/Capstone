@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Gallatin County Sheriffs office daily feed</title>
+        <link rel="stylesheet" href="/styles.css">
+    </head>
+    <body class="fullbody"> {
+        <title>Full Page background Color</title>
+    }
+    </body>
+    <body>
+        <header>
+            <div class="h1">
+                <h1>Submission</h1>
+                <img src="Gallatin-County-Seal.png">
+            </div>
+            <nav class="navbar">
+                <ul>
+                    <li><a href="Landing.html">Main Page</a></li>
+                    <li><a href="Submission.html">Submission</a></li>
+                    <li><a href="Archives.html">Archives</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main class="sub1">
+            <h1>Test</h1>
+            <p>Please input an accurate abreviation of your call</p>
+            <label for="date">Todays Date</label>
+            <input type="date" id="date" name="date" placeholder="XX/XX/XXXX">
+            
+            <label for="Location">Address of the call</label>
+            <input type="address" id="address" name="address" placeholder="Street address, City, Zip-code">
+            
+            <label for="summary" class="summary">Call Summary</label>
+            <input type="text" id="summary" name="summary" placeholder="Include a brief summary of your call. Include important details and a description of the location.">
+            
+            <h1>Text Feed</h1>
+            <form action="/submit_feed" method="POST">
+                <label for="feed">Todays Calls:</label><br>
+                <textarea id="feed" name="feed" rows="10" cols="50">
+                </textarea><br><br>
+                <input type="submit" value="Submit">
+            </form>
+            <figure>
+                
+            </figure>
+        </main>
+        <button type="submit"> Submit </button> 
+        <footer>
+            
+        </footer>
+    </body>
+</html>
