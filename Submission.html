@@ -26,28 +26,30 @@
         </header>
         <main class="sub1">
             <h1>Test</h1>
-            <p>Please input an accurate abreviation of your call</p>
+            <p>Please input an accurate abbreviation of your call</p>
             <label for="date">Todays Date</label>
             <input type="date" id="date" name="date" placeholder="XX/XX/XXXX">
             
             <label for="Location">Address of the call</label>
             <input type="address" id="address" name="address" placeholder="Street address, City, Zip-code">
             
-            <label for="summary" class="summary">Call Summary</label>
-            <input type="text" id="summary" name="summary" placeholder="Include a brief summary of your call. Include important details and a description of the location.">
+            <label for="summary">Call Summary</label>
+            <input type="text" id="summary" name="summary" placeholder="Home owner was in distress over noises coming from crawlspace...">
+            <button type="submit"> Submit </button>
+            <!-- Center this box under address and date also make larger-->
             
             <h1>Text Feed</h1>
-            <form action="/submit_feed" method="POST">
-                <label for="feed">Todays Calls:</label><br>
-                <textarea id="feed" name="feed" rows="10" cols="50">
-                </textarea><br><br>
-                <input type="submit" value="Submit">
+           
+            <form id="liveForm">
+                <input type="text" id="liveInput" placeholder="Todays calls will show here">
             </form>
-            <figure>
-                
-            </figure>
+            <div id="displayArea">
+
+            </div> 
+            
+            <script src="scripts.js"></script>
         </main>
-        <button type="submit"> Submit </button> 
+
         <footer>
             
         </footer>

@@ -73,3 +73,20 @@ input[type=text] {
 .sub1 {
   color: white; 
 }
+
+.pass {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  vertical-align: 500px;
+  align-items: flex-end;
+}
+
+.liveInput {
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  height: 500px;
+  width: 75%;
+}
