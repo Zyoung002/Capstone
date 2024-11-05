@@ -34,7 +34,7 @@ let postsubmit = document.getElementById("inputs");
         let address = document.getElementById("address");
         let summary = document.getElementById('summary');
 
-        if (address.value == "" || summary.value == "") {
+        if (address.value == "1307 Street name" || summary.value == "") {
             alert("Ensure you have filled out all fields!")
         } else {
             alert("Your data has been added to the feed!");
