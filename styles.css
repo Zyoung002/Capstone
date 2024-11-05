@@ -83,10 +83,13 @@ input[type=text] {
   align-items: flex-end;
 }
 
-.liveInput {
-  justify-content: center;
+.feeddisplay {
+  box-sizing: border-box;
   display: flex;
-  flex-direction: column;
-  height: 500px;
-  width: 75%;
+  max-height: 500px;
+  max-width: 75%;
+  background-color: white;
+  
+  
+
 }

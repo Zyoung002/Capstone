@@ -27,6 +27,7 @@
         <main class="sub1">
             <h1>Test</h1>
             <p>Please input an accurate abbreviation of your call</p>
+            <form id= "inputs">
             <label for="date">Todays Date</label>
             <input type="date" id="date" name="date" placeholder="XX/XX/XXXX">
             
@@ -35,16 +36,17 @@
             
             <label for="summary">Call Summary</label>
             <input type="text" id="summary" name="summary" placeholder="Home owner was in distress over noises coming from crawlspace...">
-            <button type="submit"> Submit </button>
+            <button type="submit" onclick="postsubmit"> Submit </button>
+            </form>
             <!-- Center this box under address and date also make larger-->
             
             <h1>Text Feed</h1>
            
-            <form id="liveForm">
-                <input type="text" id="liveInput" placeholder="Todays calls will show here">
-            </form>
-            <div id="displayArea">
+            
+            <div id="displayArea" name="live feed box">
+                <form id="feeddisplay">
 
+                </form>
             </div> 
             
             <script src="scripts.js"></script>
