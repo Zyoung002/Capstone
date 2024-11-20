@@ -7,7 +7,7 @@ margin-right: auto;
 background-color: blue;
 color: white ;
 font-size: 30;
-border: solid darkblue ;
+border-radius: 15px;
 
 border: solid black;
  
@@ -16,22 +16,26 @@ border: solid black;
 .navbar {
         text-align: center; 
         border-bottom: 1px solid #ccc;
-        background-color: grey 
+        background-color: grey;
+        border-radius: 15px; 
       }
       
       .navbar li {
         display: inline-block; 
         margin-right: 20px; 
+        border-radius: 15px;
       }
       
       .navbar li:last-child {
         margin-right: 0; 
+        border-radius: 15px;
       }
       
       .navbar a {
         text-decoration: none; 
         color: white; 
         font-weight: bold; 
+        border-radius: 15px;
       }
       
       .navbar a:hover {
@@ -45,7 +49,7 @@ align-content: center;
 text-align: center;
 border: solid white;
 font-style: Bluefonte;
-
+border-radius: 15px;
 
 
 }
@@ -62,6 +66,7 @@ input[type=text] {
   margin: 0 0;
   text-wrap: wrap;
   vertical-align: top;
+  border-radius: 15px;
   
 }
 
@@ -89,6 +94,7 @@ input[type=text] {
   justify-content: center;
   width: 100%;
   height: 100%;
+  border-radius: 15px;
 }
 
 .datecolumns {
@@ -143,4 +149,69 @@ input[type=text] {
 .error {
   color: red;
   display: none;
+}
+
+.submit {
+  border-radius: 15px;
+}
+
+body {
+  font-family: Arial, sans-serif;
+}
+.container {
+  width: 300px;
+  padding: 16px;
+  margin: auto;
+  background-color: #f2f2f2;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+input2[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  border-radius: 15px;
+}
+button {
+  background-color: orangered;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 15%;
+  border-radius: 15px;
+  
+}
+button:hover {
+  opacity: 0.8;
+}
+
+.register {
+  display: flex;
+  flex-direction:column;
+  align-items: center;
+  width: 100%;
+}
+
+.h3{
+  font-family: verdana;
+  color: white;
+  background-color: gray;
+  border-radius: 15px;
+  font-size: 35px;
+  border: 3px solid white;
+}
+
+.p3{
+  font-family: verdana;
+  color: white;
+  background-color: gray;
+  border-radius: 15px;
+  font-size: 25px;
+  margin: auto;
+  border: 3px solid white;
 }

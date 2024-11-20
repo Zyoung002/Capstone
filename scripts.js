@@ -22,7 +22,6 @@ document.getElementById("inputs").addEventListener("submit", function (event) {
 
   const date = document.getElementById("date").value;
   const dateError = document.getElementById("dateError");
-
   if (date === "") {
     dateError.style.display = "inline";
     event.preventDefault();
@@ -48,9 +47,12 @@ document.getElementById("inputs").addEventListener("submit", function (event) {
   } else {
     summaryError.style.display = "none";
   }
-
+if (date!==""&& address!=="" && summary!=="") {
   addElement();
+}
 });
+
+
 
 // manipulate Dom (adding to dom javascript) to add forget order, get submit by date,  and in future remove a row//
 
@@ -78,4 +80,55 @@ function addElement() {
   let summary = document.getElementById("summary");
   newDiv3.textContent = summary.value;
   document.getElementById("summarycolumns").appendChild(newDiv3);
+
+  let arrayinput = {
+    date: document.getElementById("date").value,
+    address: document.getElementById("address").value,
+    summary: document.getElementById("summary").value,
+};
+  const datearray = [arrayinput];
+  console.log(datearray);
+
+  const Jsonarray = JSON.stringify(datearray);
+  localStorage.setItem("array", Jsonarray);
 }
+/*
+window.onload = function addElement(){
+  let datearray = localStorage.getItem('array');
+  const arrayinput = JSON.parse(datearray)
+
+  const newDiv = document.createElement("div");
+  newElement = newDiv;
+  newElement.className = "datecolumn";
+  const targetdiv = document.getElementsByClassName("datecolumn");
+  newDiv.textContent = date.value;
+  document.getElementById("datecolumns").appendChild(newDiv);
+
+  const newDiv2 = document.createElement("div");
+  newElement2 = newDiv2;
+  newElement2.className = "addresscolumn";
+  const targetdiv2 = document.getElementsByClassName("addresscolumn");
+  newDiv2.textContent = address.value;
+  document.getElementById("addresscolumns").appendChild(newDiv2);
+
+  const newDiv3 = document.createElement("div");
+  newElement3 = newDiv3;
+  newElement3.className = "summarycolumn";
+  const targetdiv3 = document.getElementsByClassName("summarycolumn");
+  newDiv3.textContent = summary.value;
+  document.getElementById("summarycolumns").appendChild(newDiv3);
+} */
+
+
+  document.getElementById('loginForm').addEventListener('submit', function(event) {
+    event.preventDefault(); 
+
+    var username = document.querySelector('input[name="uname"]').value;
+    var password = document.querySelector('input[name="psw"]').value;
+
+    if (username === 'user' && password === 'password') {
+        alert('Login successful!');
+    } else {
+        alert('Invalid username or password');
+    }
+});

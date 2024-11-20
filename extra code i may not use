@@ -1,0 +1,14 @@
+<form action="">
+            <label for="first">Username:</label>
+                <input type="text1" id="first" name="first" 
+                 placeholder="Enter your Username" required>
+                 <a href="registration.html">Register</a>   
+                
+
+            <label for="password">Password:</label>
+                <input type="password" id="password" name="password" 
+                placeholder="Enter your Password" required>
+                <a href="forgotpass.html">Forgot Password?</a>
+            <button type="submit" class="submit"> Submit </button>
+               
+        </form>
