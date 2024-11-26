@@ -1,4 +1,4 @@
-<form action="">
+/*<form action="">
             <label for="first">Username:</label>
                 <input type="text1" id="first" name="first" 
                  placeholder="Enter your Username" required>
@@ -12,3 +12,34 @@
             <button type="submit" class="submit"> Submit </button>
                
         </form>
+
+        const Jsonarray = JSON.stringify(datearray);
+
+        const newDiv2 = document.createElement("div");
+        newElement2 = newDiv2;
+        newElement2.className = "addresscolumn";
+        const targetdiv2 = document.getElementsByClassName("addresscolumn");
+        newDiv2.textContent = address.value;
+        document.getElementById("addresscolumns").appendChild(newDiv2);
+      
+        const newDiv3 = document.createElement("div");
+        newElement3 = newDiv3;
+        newElement3.className = "summarycolumn";
+        const targetdiv3 = document.getElementsByClassName("summarycolumn");
+        newDiv3.textContent = summary.value;
+        document.getElementById("summarycolumns").appendChild(newDiv3)
+
+          /*document.getElementById('inputs').addEventListener("submit", function (event)) {
+      event.preventDefault();
+
+      if (arrayinput.length < 3){
+        arrayinput.push(datearray);
+        console.log(datearray);
+      }
+      
+    }
+
+  }
+  /*
+    console.log(datearray);
+    localStorage.setItem("array", JSON.stringify(datearray));*/

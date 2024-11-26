@@ -47,35 +47,31 @@ document.getElementById("inputs").addEventListener("submit", function (event) {
   } else {
     summaryError.style.display = "none";
   }
-if (date!==""&& address!=="" && summary!=="") {
-  addElement();
-}
+  if (date !== "" && address !== "" && summary !== "") {
+    addElement();
+  }
 });
 
-
-
 // manipulate Dom (adding to dom javascript) to add forget order, get submit by date,  and in future remove a row//
+const datearray = [];
 
 function addElement() {
   const newDiv = document.createElement("div");
-  newElement = newDiv;
-  newElement.className = "datecolumn";
+  newDiv.className = "datecolumn";
   const targetdiv = document.getElementsByClassName("datecolumn");
   let date = document.getElementById("date");
   newDiv.textContent = date.value;
   document.getElementById("datecolumns").appendChild(newDiv);
 
   const newDiv2 = document.createElement("div");
-  newElement2 = newDiv2;
-  newElement2.className = "addresscolumn";
+  newDiv2.className = "addresscolumn";
   const targetdiv2 = document.getElementsByClassName("addresscolumn");
   let address = document.getElementById("address");
   newDiv2.textContent = address.value;
   document.getElementById("addresscolumns").appendChild(newDiv2);
 
   const newDiv3 = document.createElement("div");
-  newElement3 = newDiv3;
-  newElement3.className = "summarycolumn";
+  newDiv3.className = "summarycolumn";
   const targetdiv3 = document.getElementsByClassName("summarycolumn");
   let summary = document.getElementById("summary");
   newDiv3.textContent = summary.value;
@@ -85,50 +81,42 @@ function addElement() {
     date: document.getElementById("date").value,
     address: document.getElementById("address").value,
     summary: document.getElementById("summary").value,
-};
-  const datearray = [arrayinput];
+  };
+  datearray.push(arrayinput);
   console.log(datearray);
-
-  const Jsonarray = JSON.stringify(datearray);
-  localStorage.setItem("array", Jsonarray);
+  localStorage.setItem("array", JSON.stringify(datearray));
 }
-/*
-window.onload = function addElement(){
-  let datearray = localStorage.getItem('array');
-  const arrayinput = JSON.parse(datearray)
 
-  const newDiv = document.createElement("div");
-  newElement = newDiv;
-  newElement.className = "datecolumn";
-  const targetdiv = document.getElementsByClassName("datecolumn");
-  newDiv.textContent = date.value;
-  document.getElementById("datecolumns").appendChild(newDiv);
+window.onload = function addElement() {
+  let datearray = localStorage.getItem("array");
+  const arrayinput = JSON.parse(datearray);
+  console.log(arrayinput);
 
-  const newDiv2 = document.createElement("div");
-  newElement2 = newDiv2;
-  newElement2.className = "addresscolumn";
-  const targetdiv2 = document.getElementsByClassName("addresscolumn");
-  newDiv2.textContent = address.value;
-  document.getElementById("addresscolumns").appendChild(newDiv2);
+  for (var i = 0; i < arrayinput.length; i++) {
+    const date = arrayinput[i].date;
+    const address = arrayinput[i].address;
+    const summary = arrayinput[i].summary;
+    console.log(date);
+    console.log(address);
+    console.log(summary);
 
-  const newDiv3 = document.createElement("div");
-  newElement3 = newDiv3;
-  newElement3.className = "summarycolumn";
-  const targetdiv3 = document.getElementsByClassName("summarycolumn");
-  newDiv3.textContent = summary.value;
-  document.getElementById("summarycolumns").appendChild(newDiv3);
-} */
+    const newDiv = document.createElement("div");
+    newDiv.className = "datecolumn";
+    const targetdiv = document.getElementsByClassName("datecolumn");
+    newDiv.textContent = (arrayinput[0].date);
+    document.getElementById("datecolumns").appendChild(newDiv);
 
+    const newDiv2 = document.createElement("div");
+    newDiv2.className = "addresscolumn";
+    const targetdiv2 = document.getElementsByClassName("addresscolumn");
+    newDiv2.textContent = (arrayinput[0].address);
+    document.getElementById("addresscolumns").appendChild(newDiv2);
 
-  document.getElementById('loginForm').addEventListener('submit', function(event) {
-    event.preventDefault(); 
+    const newDiv3 = document.createElement("div");
+    newDiv3.className = "summarycolumn";
+    const targetdiv3 = document.getElementsByClassName("summarycolumn");
+    newDiv3.textContent = (arrayinput[0].summary);
+    document.getElementById("summarycolumns").appendChild(newDiv3);
 
-    var username = document.querySelector('input[name="uname"]').value;
-    var password = document.querySelector('input[name="psw"]').value;
-
-    if (username === 'user' && password === 'password') {
-        alert('Login successful!');
-    } else {
-        alert('Invalid username or password');
-    }
-});
+  }
+}
