@@ -1,20 +1,3 @@
-const date = document.getElementById("date");
-
-date.addEventListener("change", (event) => {
-  const selectedDate = event.target.value;
-  let date = document.getElementById("date").value;
-  console.log(date);
-});
-// code capture form submission with out page turn over and log it out//
-
-let postsubmit = document.getElementById("inputs");
-
-postsubmit.addEventListener("submit", (d) => {
-  let date = document.getElementById("date");
-  let address = document.getElementById("address");
-  let summary = document.getElementById("summary");
-});
-
 // submission page validation//
 
 document.getElementById("inputs").addEventListener("submit", function (event) {
@@ -92,7 +75,8 @@ window.onload = function addElement() {
   const arrayinput = JSON.parse(datearray);
   console.log(arrayinput);
 
-  for (var i = 0; i < arrayinput.length; i++) {
+ if (localStorage.getItem('array') !== null){   
+ for (var i = 0; i < arrayinput.length; i++) {
     const date = arrayinput[i].date;
     const address = arrayinput[i].address;
     const summary = arrayinput[i].summary;
@@ -117,6 +101,9 @@ window.onload = function addElement() {
     const targetdiv3 = document.getElementsByClassName("summarycolumn");
     newDiv3.textContent = (arrayinput[0].summary);
     document.getElementById("summarycolumns").appendChild(newDiv3);
-
+  }
+  }
+  else {
+    return null;
   }
 }
