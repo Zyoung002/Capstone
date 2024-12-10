@@ -85,8 +85,17 @@ input[type=text] {
   flex-direction: column;
   align-content: center;
   justify-content: center;
+  width: 400px;
   vertical-align: 500px;
   align-items: flex-end;
+}
+#id {
+  border-radius: 15px;
+}
+#summary {
+  display: flex;
+  height: 100%;
+  width: 35%;
 }
 
 .feed {
@@ -177,15 +186,7 @@ body {
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
-input2[type=text], input[type=password] {
-  width: 100%;
-  padding: 12px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
-  border-radius: 15px;
-}
+
 button {
   background-color: orangered;
   color: white;
