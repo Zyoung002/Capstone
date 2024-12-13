@@ -2,7 +2,11 @@
 import "./main.css";
 
 import { initializeApp } from "firebase/app";
-import { getAuth, connectAuthEmulator, signInWithEmailandPassword } from 'firebase/auth';
+import {
+  getAuth,
+  connectAuthEmulator,
+  signInWithEmailandPassword,
+} from "firebase/auth";
 
 // TODO: Replace the following with your app's Firebase project configuration
 const firebaseApp = initializeApp({
@@ -16,41 +20,6 @@ const firebaseApp = initializeApp({
   //...
 });
 
-
-const auth = getAuth(firebaseApp);
-
-const loginEmailPassword = async () => {
-  const loginEmail = txtEmail.value;
-  const loginPassword = txtPassword.value;
-
-  const userCredentials = await signInWithEmailAndPassword(auth, loginEmail, loginPassword);
-  console.log(userCredentials.use);
-}
-
-btnLogin.addEventListener("click", loginEmailPassword);
-/*
-onAuthStateChanged(auth, user => {
-  if(user = null) {
-    console.log('logged in!');
-  } else {
-    console.log('No user');
-  }
-})
-
-createUserWithEmailAndPassword(auth, email, password)
-  .then((userCredential) => {
-    // Signed up
-    const user = userCredential.user;
-    const email = getElementById("email").value;
-    const password = getElementById("password").value;
-    // ...
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    // ..
-  });
-*/
 
 document.getElementById("inputs").addEventListener("submit", function (event) {
   event.preventDefault();

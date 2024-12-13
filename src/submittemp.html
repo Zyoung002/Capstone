@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Gallatin County Sheriffs office daily feed</title>
+        <link rel="stylesheet" href="/styles.css">
+    </head>
+    <body class="fullbody"> 
+        <title>Full Page background Color</title>
+    
+    </body>
+    <body>
+        <header>
+            <div class="h1">
+                <h1>Submission</h1>
+                <img src="Gallatin-County-Seal.png">
+            </div>
+            <nav class="navbar">
+                <ul>
+                    <li><a href="Landing.html">Main Page</a></li>
+                    <li><a href="Submission.html">Submission</a></li>
+                    <li><a href="Archives.html">Archives</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main class="sub1">
+            <h1>Test</h1>
+            <p>Please input an accurate abbreviation of your call</p>
+            <form id= "inputs">
+            <label for="date">Todays Date</label>
+            <input type="date" id="date" name="date" placeholder="XX/XX/XXXX">
+            <span id="dateError" class="error">Date is required.</span>
+            </br>
+        </br>
+    </br>
+            <label for="Location">Address of the call</label>
+            <input type="address" id="address" name="address" placeholder="Street address, City, Zip-code">
+            <span id="addressError" class="error">Location is required.</span>
+            </br>
+        </br>
+    </br>
+            <label for="summary">Call Summary</label>
+            <input type="text" id="summary"  name="summary" placeholder="Home owner was in distress over noises coming from crawlspace...">
+            <span id="summaryError" class="error">Brief Summary is required.</span>
+            
+            <button type="submit"> Submit </button>
+            </form>
+            <!-- Center this box under address and date also make larger-->
+            
+            <h1>Text Feed</h1>
+           
+            
+            <div class="feed" id="displayArea">
+
+                <div class="datecolumns" id="datecolumns">
+            
+                </div>
+
+                <div class="addresscolumns" id="addresscolumns">
+                
+                </div>
+
+                <div class="summarycolumns" id="summarycolumns">
+                
+                </div>
+            </div> 
+            
+            <script src="./src/scripts.js"></script>
+        </main>
+
+        <footer>
+            
+        </footer>
+      
+    </body>
+</html>
