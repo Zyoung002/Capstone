@@ -1,15 +1,15 @@
 const path = require('path');
 const common = require ('./webpack.common');
-const merge = require("webpack-merge");
+const {merge} = require("webpack-merge");
 
-module.exports = {
+module.exports = merge(common, {
   devServer: {
     static: './dist',
   },
   mode: "development",
   output: {
-    filename: 'main.js',
+    filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist'),
   },
  
-}; 
+}); 
