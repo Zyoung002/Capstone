@@ -1,5 +1,4 @@
 // submission page valildation
-import "./main.css";
 
 import { initializeApp } from "firebase/app";
 import {
@@ -7,6 +6,8 @@ import {
   connectAuthEmulator,
   signInWithEmailandPassword,
 } from "firebase/auth";
+
+import './main.css';
 
 // TODO: Replace the following with your app's Firebase project configuration
 const firebaseApp = initializeApp({
@@ -128,3 +129,5 @@ window.onload = function addElement() {
     document.getElementById("summarycolumns").appendChild(newDiv3);
   }
 };
+
+console.log('hi');
