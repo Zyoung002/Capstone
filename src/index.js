@@ -3,9 +3,11 @@
 import { initializeApp } from "firebase/app";
 import {
   getAuth,
+  createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   onAuthStateChanged,
 } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
 
 import "./main.css";
 
@@ -22,13 +24,39 @@ const firebaseConfig = {
 };
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
-let login = document.getElementById('login');
 
-if (login !== null){
-document.getElementById("login").addEventListener("submit",
-  function (event) {
+let registration = document.getElementById("registration");
+if (registration !== null) {
+  document
+    .getElementById("registration")
+    .addEventListener("submit", function (event) {
+      event.preventDefault();
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+      createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          // Signed up
+          const user = userCredential.user;
+          alert("Registration successful!");
+          window.location.href = "http://localhost:8080/landingtemp.html";
+          // ...
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          // ..
+        });
+    });
+} else {
+  console.log("Element doesnt exist");
+}
+
+let login = document.getElementById("login");
+
+if (login !== null) {
+  document.getElementById("login").addEventListener("submit", function (event) {
     event.preventDefault();
-    const email = document.getElementById('email').value;
+    const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
 
     signInWithEmailAndPassword(auth, email, password)
@@ -45,8 +73,7 @@ document.getElementById("login").addEventListener("submit",
         const errorMessage = error.message;
       });
   });
-}
-else {
+} else {
   console.log("element does not exist");
 }
 onAuthStateChanged(auth, (user) => {
@@ -61,116 +88,117 @@ onAuthStateChanged(auth, (user) => {
   }
 });
 
-let inputs = document.getElementById('inputs');
-if (inputs !== null){
-document.getElementById("inputs").addEventListener("submit", function (event) {
-  event.preventDefault();
+let inputs = document.getElementById("inputs");
+if (inputs !== null) {
+  document
+    .getElementById("inputs")
+    .addEventListener("submit", function (event) {
+      event.preventDefault();
 
-  const date = document.getElementById("date").value;
-  const dateError = document.getElementById("dateError");
-  if (date === "") {
-    dateError.style.display = "inline";
-    event.preventDefault();
-  } else {
-    dateError.style.display = "none";
-  }
+      const date = document.getElementById("date").value;
+      const dateError = document.getElementById("dateError");
+      if (date === "") {
+        dateError.style.display = "inline";
+        event.preventDefault();
+      } else {
+        dateError.style.display = "none";
+      }
 
-  const address = document.getElementById("address").value;
-  const addressError = document.getElementById("addressError");
+      const address = document.getElementById("address").value;
+      const addressError = document.getElementById("addressError");
 
-  if (address === "") {
-    addressError.style.display = "inline";
-    event.preventDefault();
-  } else {
-    addressError.style.display = "none";
-  }
-  const summary = document.getElementById("summary").value;
-  const summaryError = document.getElementById("summaryError");
+      if (address === "") {
+        addressError.style.display = "inline";
+        event.preventDefault();
+      } else {
+        addressError.style.display = "none";
+      }
+      const summary = document.getElementById("summary").value;
+      const summaryError = document.getElementById("summaryError");
 
-  if (summary === "") {
-    summaryError.style.display = "inline";
-    event.preventDefault();
-  } else {
-    summaryError.style.display = "none";
-  }
-  if (date !== "" && address !== "" && summary !== "") {
-    addElement();
-  }
-});
+      if (summary === "") {
+        summaryError.style.display = "inline";
+        event.preventDefault();
+      } else {
+        summaryError.style.display = "none";
+      }
+      if (date !== "" && address !== "" && summary !== "") {
+        addElement();
+      }
+    });
 
-// manipulate Dom (adding to dom javascript) to add forget order, get submit by date,  and in future remove a row//
+  // manipulate Dom (adding to dom javascript) to add forget order, get submit by date,  and in future remove a row//
 
-function addElement() {
-  let datearray = localStorage.getItem("array");
-  if (datearray === null) {
-    datearray = [];
-  } else {
-    datearray = JSON.parse(datearray);
-  }
-  const newDiv = document.createElement("div");
-  newDiv.className = "datecolumn";
-  const targetdiv = document.getElementsByClassName("datecolumn");
-  let date = document.getElementById("date");
-  newDiv.textContent = date.value;
-  document.getElementById("datecolumns").appendChild(newDiv);
-
-  const newDiv2 = document.createElement("div");
-  newDiv2.className = "addresscolumn";
-  const targetdiv2 = document.getElementsByClassName("addresscolumn");
-  let address = document.getElementById("address");
-  newDiv2.textContent = address.value;
-  document.getElementById("addresscolumns").appendChild(newDiv2);
-
-  const newDiv3 = document.createElement("div");
-  newDiv3.className = "summarycolumn";
-  const targetdiv3 = document.getElementsByClassName("summarycolumn");
-  let summary = document.getElementById("summary");
-  newDiv3.textContent = summary.value;
-  document.getElementById("summarycolumns").appendChild(newDiv3);
-
-  let arrayinput = {
-    date: document.getElementById("date").value,
-    address: document.getElementById("address").value,
-    summary: document.getElementById("summary").value,
-  };
-  datearray.push(arrayinput);
-  console.log(datearray);
-  localStorage.setItem("array", JSON.stringify(datearray));
-}
-
-window.onload = function addElement() {
-  let datearray = localStorage.getItem("array");
-  const arrayinput = JSON.parse(datearray);
-  console.log(arrayinput);
-
-  for (var i = 0; i < arrayinput.length; i++) {
-    const date = arrayinput[i].date;
-    const address = arrayinput[i].address;
-    const summary = arrayinput[i].summary;
-    console.log(date);
-    console.log(address);
-    console.log(summary);
-
+  function addElement() {
+    let datearray = localStorage.getItem("array");
+    if (datearray === null) {
+      datearray = [];
+    } else {
+      datearray = JSON.parse(datearray);
+    }
     const newDiv = document.createElement("div");
     newDiv.className = "datecolumn";
     const targetdiv = document.getElementsByClassName("datecolumn");
-    newDiv.textContent = arrayinput[i].date;
+    let date = document.getElementById("date");
+    newDiv.textContent = date.value;
     document.getElementById("datecolumns").appendChild(newDiv);
 
     const newDiv2 = document.createElement("div");
     newDiv2.className = "addresscolumn";
     const targetdiv2 = document.getElementsByClassName("addresscolumn");
-    newDiv2.textContent = arrayinput[i].address;
+    let address = document.getElementById("address");
+    newDiv2.textContent = address.value;
     document.getElementById("addresscolumns").appendChild(newDiv2);
 
     const newDiv3 = document.createElement("div");
     newDiv3.className = "summarycolumn";
     const targetdiv3 = document.getElementsByClassName("summarycolumn");
-    newDiv3.textContent = arrayinput[i].summary;
+    let summary = document.getElementById("summary");
+    newDiv3.textContent = summary.value;
     document.getElementById("summarycolumns").appendChild(newDiv3);
+
+    let arrayinput = {
+      date: document.getElementById("date").value,
+      address: document.getElementById("address").value,
+      summary: document.getElementById("summary").value,
+    };
+    datearray.push(arrayinput);
+    console.log(datearray);
+    localStorage.setItem("array", JSON.stringify(datearray));
   }
-};
-}
-else {
+
+  window.onload = function addElement() {
+    let datearray = localStorage.getItem("array");
+    const arrayinput = JSON.parse(datearray);
+    console.log(arrayinput);
+
+    for (var i = 0; i < arrayinput.length; i++) {
+      const date = arrayinput[i].date;
+      const address = arrayinput[i].address;
+      const summary = arrayinput[i].summary;
+      console.log(date);
+      console.log(address);
+      console.log(summary);
+
+      const newDiv = document.createElement("div");
+      newDiv.className = "datecolumn";
+      const targetdiv = document.getElementsByClassName("datecolumn");
+      newDiv.textContent = arrayinput[i].date;
+      document.getElementById("datecolumns").appendChild(newDiv);
+
+      const newDiv2 = document.createElement("div");
+      newDiv2.className = "addresscolumn";
+      const targetdiv2 = document.getElementsByClassName("addresscolumn");
+      newDiv2.textContent = arrayinput[i].address;
+      document.getElementById("addresscolumns").appendChild(newDiv2);
+
+      const newDiv3 = document.createElement("div");
+      newDiv3.className = "summarycolumn";
+      const targetdiv3 = document.getElementsByClassName("summarycolumn");
+      newDiv3.textContent = arrayinput[i].summary;
+      document.getElementById("summarycolumns").appendChild(newDiv3);
+    }
+  };
+} else {
   console.log("this elements is not on this page");
 }
