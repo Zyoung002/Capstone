@@ -38,7 +38,7 @@ if (registration !== null) {
           // Signed up
           const user = userCredential.user;
           alert("Registration successful!");
-          window.location.href = "http://localhost:8080/landingtemp.html";
+          window.location.href = "http://localhost:8080/logintemp.html";
           // ...
         })
         .catch((error) => {
