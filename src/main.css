@@ -78,7 +78,7 @@ input[type="text"] {
 .pass {
   display: flex;
   flex-direction: column;
-  align-content: center;
+  
   justify-content: center;
   width: 400px;
   vertical-align: 500px;

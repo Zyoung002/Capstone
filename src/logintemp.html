@@ -4,48 +4,30 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login Page</title>
-    <link rel="stylesheet" href="/styles.css" />
+   
   </head>
   <body class="fullbody">
     <header>
       <div class="h1">
         <h1>Gallatin County Sheriffs Office Daily Feed</h1>
-        <img src="Gallatin-County-Seal.png" />
+        
       </div>
     </header>
 
-    <div class="login">
-      <h2>Login</h2>
-      <form id="loginForm">
-        <div class="email" id="email">
-          <label for="email"><b>Email goes here</b></label>
-          <input
-            type="text"
-            placeholder="Enter Username"
-            name="username"
-            required
-          />
-        </div>
-        <br />
-        <div class="password" id="password">
-          <label for="password"><b>Password</b></label>
-          <input
-            type="password"
-            placeholder="Enter Password"
-            name="psw"
-            required
-          />
-        </div>
-        <button type="submit" id="submit">Login</button>
-
+    <form id='login'>
+      <h3 class="h3">Login Page</h3>
+      <p class="p3">Enter User information:</p>
+      <input type="text" class="email" id = "email" placeholder="example@example.com" />
+      <input type="text" class="password" id = "password" placeholder="Enter Password" />
+      <button type="submit">Login</button>
+    </form>
         <a href="registration.html">Register</a>
         <a href="forgotpass.html">Forgot Password?</a>
       </form>
     </div>
     <body>
-      <!-- Insert this script at the bottom of the HTML, but before you use any Firebase services -->
       
     </body>
-    <script src="./dist/main.js"></script>
+    <script src="./main.js"></script>
   </body>
 </html>

@@ -3,14 +3,14 @@
 import { initializeApp } from "firebase/app";
 import {
   getAuth,
-  connectAuthEmulator,
-  signInWithEmailandPassword,
+  signInWithEmailAndPassword,
+  onAuthStateChanged,
 } from "firebase/auth";
 
-import './main.css';
+import "./main.css";
 
 // TODO: Replace the following with your app's Firebase project configuration
-const firebaseApp = initializeApp({
+const firebaseConfig = {
   apiKey: "AIzaSyC06mblU09i36sueyZaSi3OG8u3XqdC9XY",
   authDomain: "gallatin-county-feed.firebaseapp.com",
   projectId: "gallatin-county-feed",
@@ -19,9 +19,50 @@ const firebaseApp = initializeApp({
   appId: "1:599858024990:web:b959a1fb7b655a82ffd40f",
   measurementId: "G-SYLMJ0CB34",
   //...
+};
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+let login = document.getElementById('login');
+
+if (login !== null){
+document.getElementById("login").addEventListener("submit",
+  function (event) {
+    event.preventDefault();
+    const email = document.getElementById('email').value;
+    const password = document.getElementById("password").value;
+
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        console.log("logged in as: ", user.email);
+        alert("Login successful!");
+        window.location.href = "http://localhost:8080/landingtemp.html";
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+      });
+  });
+}
+else {
+  console.log("element does not exist");
+}
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    // User is signed in, see docs for a list of available properties
+    // https://firebase.google.com/docs/reference/js/auth.user
+    const uid = user.uid;
+    // ...
+  } else {
+    // User is signed out
+    // ...
+  }
 });
 
-
+let inputs = document.getElementById('inputs');
+if (inputs !== null){
 document.getElementById("inputs").addEventListener("submit", function (event) {
   event.preventDefault();
 
@@ -129,5 +170,7 @@ window.onload = function addElement() {
     document.getElementById("summarycolumns").appendChild(newDiv3);
   }
 };
-
-console.log('hi');
+}
+else {
+  console.log("this elements is not on this page");
+}
